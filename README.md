@@ -9,3 +9,6 @@ Order service publishes an order event to the kafka broker to the topic order_to
 
 ### Email and Stock service
 Both of these services subscribes to the kafka broker to listen for messages published in the kafka broker on the topic order_topics. They act as the consumer. 
+
+#### Note
+Since this project is for learning about kafka. The events consumed are not utilised further. But this data consumed is processed further according to the needs of our application. 
