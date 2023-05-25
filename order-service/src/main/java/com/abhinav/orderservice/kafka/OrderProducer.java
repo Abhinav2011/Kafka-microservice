@@ -20,7 +20,6 @@ public class OrderProducer {
         this.newTopic = newTopic;
         this.kafkaTemplate = kafkaTemplate;
     }
-    public OrderProducer() {}
     public void sendMessage(OrderEvent orderEvent) {
         //create message
         Message<OrderEvent> orderEventMessage = MessageBuilder.withPayload(orderEvent).setHeader(KafkaHeaders.TOPIC, newTopic.name()).build();
