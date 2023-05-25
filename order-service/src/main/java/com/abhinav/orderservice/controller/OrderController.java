@@ -16,11 +16,12 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/v1")
 public class OrderController {
-    private final OrderProducer orderProducer;
+    private OrderProducer orderProducer;
     private final Logger log = LoggerFactory.getLogger(OrderController.class);
     public OrderController(OrderProducer orderProducer) {
         this.orderProducer = orderProducer;
     }
+
 
     @PostMapping("/orders")
     public String placeOrder(@RequestBody Order order) {

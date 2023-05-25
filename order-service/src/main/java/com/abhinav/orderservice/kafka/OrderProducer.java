@@ -7,19 +7,20 @@ import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
-import org.springframework.util.concurrent.ListenableFuture;
 
 @Service
 public class OrderProducer {
-    private final NewTopic newTopic;
-    private final KafkaTemplate<String, OrderEvent> kafkaTemplate;
+
+    private NewTopic newTopic;
+
+    private KafkaTemplate<String, OrderEvent> kafkaTemplate;
+
 
     public OrderProducer(NewTopic newTopic, KafkaTemplate<String, OrderEvent> kafkaTemplate) {
         this.newTopic = newTopic;
         this.kafkaTemplate = kafkaTemplate;
     }
-
-
+    public OrderProducer() {}
     public void sendMessage(OrderEvent orderEvent) {
         //create message
         Message<OrderEvent> orderEventMessage = MessageBuilder.withPayload(orderEvent).setHeader(KafkaHeaders.TOPIC, newTopic.name()).build();
